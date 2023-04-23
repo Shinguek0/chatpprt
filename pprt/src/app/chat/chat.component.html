@@ -1,0 +1,79 @@
+<form (ngSubmit)="addMessage()" class="">
+<div class="py-4 flex flex-col items-center justify-center min-h-screen w-screen">
+  <h2 class="bg-gray-600">Atendimento Online</h2>
+  <div class="w-2/4">
+    <div id="chatbox" class="flex flex-col rounded overflow-hidden shadow-lg max-w-full min-w-2/4 bg-gray-600 border border-gray-200">
+      <main id="chat-messages" class="overflow-y-auto flex flex-col p-4 h-96">
+        <div class="mb-3.5 flex flex-col items-start self-start">
+          <div class="mb-0.5 text-sm font-bold">Atendente:</div>
+          <div class="bg-blue-200 break-all px-2 py-1 rounded">Salve pai supimpa?</div>
+        </div>
+        <div *ngFor="let item of MessagesService.items$ | async" class="mb-3.5 flex flex-col items-end self-end">
+          <div class="mb-0.5 text-sm font-bold">Você:</div>
+          <div class="bg-blue-200 break-all px-2 py-1 rounded">{{ item.name }}</div>
+        </div>  
+        <div *ngIf="newMessageText" class="mt-1 text-red-500">{{ newMessageText }}</div>
+      </main>
+    </div>  
+    <!-- Input de mensagem -->
+     <div class="flex flex-row w-full">
+      <input 
+        [(ngModel)]="newMessageText"
+        id = "newMessageText"
+        name = "newMessageText"
+        type="text"
+        placeholder="Digite sua mensagem aqui..."
+        class="flex-1 border border-gray-800 px-3 py-2 m-0.5 rounded" 
+        />
+        <div class="w-2/12">
+          <button class="bg-blue-600 text-white px-3 py-2 m-0.5 rounded hover:bg-blue-900" type="submit" id="send-button">Enviar</button>
+          <button class="bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-900" type="button" id="receive-button">Receber</button>
+        </div>
+      </div>
+        <div *ngIf="errorMessage" class="mt-1 text-red-500">{{ errorMessage }}</div>
+  </div>
+</div>
+</form>
+<!-- 
+<div>
+  <h1 class="text-3xl font-bold underline">Title</h1>
+  <h2>Contagem:</h2>
+  <p [class.atencao]="this.contagem > 5" [class.legal]="this.contagem === 2">
+    {{ contagem }}
+  </p>
+  <p *ngIf="this.contagem >= 10">Chega caralho!</p>
+  <button (click)="incrementar()" class="ml-4 py-2 px-4 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600">Incrementar</button>
+  <button [disabled]="this.contagem < 1" (click)="decrementar()" class="ml-4 py-2 px-4 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600">
+    Decrementar
+  </button>
+  <br />
+  <p>Seu nome é: {{ nome }}</p>
+  <button (click)="this.nome = 'Arthur'" class="ml-4 py-2 px-4 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600">Mudar para Arthur</button>
+</div>
+
+<br />
+<ul>
+  <li *ngFor="let aluno of alunos">
+    {{ aluno.nome }} com a idade de {{ aluno.idade }}
+  </li>
+</ul>
+
+<button (click)="adicionaAluno({ nome: 'Gustavo', idade: 25 })" class="ml-4 py-2 px-4 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600">
+  Adiciona Gustavo
+</button>
+<button (click)="adicionaAluno({ nome: 'Lucas', idade: 36 })" class="ml-4 py-2 px-4 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600">
+  Adiciona Lucas
+</button>
+
+<br />
+<br />
+<label for="nome">Informe seu nome:</label>
+<input type="text" [(ngModel)]="nome" />
+<br />
+<label for="nome">Informe sua idade:</label>
+<input type="text" [(ngModel)]="idade" />
+<br />
+<button (click)="adicionaAluno({ nome: this.nome, idade: +this.idade })" class="ml-4 py-2 px-4 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600">
+  Adiciona novo Aluno
+</button>
+ -->
