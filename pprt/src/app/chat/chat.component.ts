@@ -12,7 +12,7 @@ export class ChatComponent {
 
   nome = 'Lucas';
   idade = 0;
-
+ 
   alunos = [
     { nome: 'Lucas', idade: 20 },
     { nome: 'Bruna', idade: 19 },

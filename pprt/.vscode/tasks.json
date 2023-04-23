@@ -16,7 +16,7 @@
           },
           "endsPattern": {
             "regexp": "bundle generation complete"
-          }
+          } 
         }
       }
     },
